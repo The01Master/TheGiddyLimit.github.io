@@ -1,416 +1,96 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.2.2",
-
-	"title": "ClassArray",
-	"type": "object",
-
-	"definitions": {
-		"classTableGroup": {
-			"properties": {
-				"title": {
-					"type": "string"
-				},
-				"subclasses": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"name": {
-								"type": "string"
-							},
-							"source": {
-								"type": "string"
-							}
-						},
-						"required": ["name", "source"],
-						"additionalProperties": false
-					}
-				},
-				"colLabels": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"rows": {
-					"type": "array",
-					"items": {
-						"type": "array",
-						"items": {
-							"$ref": "entry.json"
-						}
-					}
-				}
-			},
-			"required": [
-				"colLabels",
-				"rows"
-			],
-			"additionalProperties": false
-		},
-
-		"classFeature": {
-			"properties": {
-				"name": {
-					"type": "string"
-				},
-				"entries": {
-					"type": "array",
-					"items": {
-						"$ref": "entry.json"
-					}
-				},
-				"gainSubclassFeature": {
-					"type": "boolean"
-				}
-			},
-			"required": [
-				"name",
-				"entries"
-			],
-			"additionalProperties": false
-		},
-		"subclassFeature": {
-			"properties": {
-				"name": {
-					"type": "string"
-				},
-				"entries": {
-					"type": "array",
-					"items": {
-						"$ref": "entry.json"
-					}
-				}
-			},
-			"required": [
-				"entries"
-			],
-			"additionalProperties": false
-		},
-
-		"proficiencies": {
-			"type": "object",
-			"properties": {
-				"armor": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"weapons": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"tools": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"skills": {
-					"type": "object",
-					"properties": {
-						"choose": {
-							"type": "integer"
-						},
-						"from": {
-							"type": "array",
-							"items": {
-								"type": "string",
-								"enum": [
-									"Acrobatics",
-									"Animal Handling",
-									"Arcana",
-									"Athletics",
-									"Deception",
-									"History",
-									"Insight",
-									"Intimidation",
-									"Investigation",
-									"Medicine",
-									"Nature",
-									"Perception",
-									"Performance",
-									"Persuasion",
-									"Religion",
-									"Sleight of Hand",
-									"Stealth",
-									"Survival"
+	"_meta": {
+		"sources": [
+			{
+				"json": "Gabriel Almeida",
+				"abbreviation": "GA",
+				"full": "Gizakiak Subclass",
+				"authors": [
+					"Gabriel almeida"
+				],
+				"version": "1.1",
+				"url": "",
+				"targetSchema": ""
+			}
+		],
+		"dateAdded": 156489454948
+	},
+	"subclass": [
+		{
+			"class": "Figther",
+			"name": "Mestre de Adagas",
+			"subclassFeatures": [
+				[
+					{
+						"name": "Mestre de adagas",
+						"entries": [
+							"De todas as armas disponíveis no mundo você escolheu adagas, talvez seja pelo benefício de poder escondê-las, talvez seja por um desafio que você levou muito a sério, ou apenas porque para você adagas são as melhores armas, uma coisa é fato, você pretende se tornar o melhor com elas, de sua confecção a seu uso, nada além de perfeição é aceitável, talvez um dia todos te conheçam, talvez ninguém nunca saiba quem é você, mas sempre que alguém cruzar com suas adagas, perceberão que essas são adgas de um mestre.",
+							{
+								"type": "entries",
+								"name": "Especialista em Adagas",
+								"entries": [
+									"Você se torna um mestre com adagas, desde sua confecção a seu uso, usando ferramentas de ferreiro você pode fazer 10 adagas a cada 4 horas de trabalho pelo custo de 10po, as adagas que você faz são únicas e têm a propriedade munição, além de ser considerado arma a distância, e corpo a corpo, mas pelas suas particularidades, só você pode usar essas adagas.",							
+									"Você também ganha proficiência em Ferramentas de Ferreiro."
 								]
 							}
-						}
-					},
-					"required": [
-						"choose",
-						"from"
-					],
-					"additionalProperties": false
-				}
-			}
-
-		},
-
-		"subclass": {
-			"properties": {
-				"name": {
-					"type": "string"
-				},
-				"shortName": {
-					"type": "string"
-				},
-				"page": {
-					"type": "integer"
-				},
-				"subclassFeatures": {
-					"type": "array",
-					"items": {
-						"type": "array",
-						"items": {"$ref": "#/definitions/subclassFeature"}
-					},
-					"maxItems": 20
-				},
-				"subclassTableGroups": {
-					"type": "array",
-					"items": { "$ref": "#/definitions/classTableGroup"}
-				},
-				"source": {
-					"type": "string"
-				},
-				"subclassSpells": {
-					"description": "Homebrew use only",
-					"type": "array",
-					"items": {"$ref": "#/definitions/spellRef"}
-				},
-				"subSubclassSpells": {
-					"description": "Homebrew use only",
-					"type": "array",
-					"items": {"$ref": "#/definitions/spellRef"}
-				},
-				"class": {
-					"description": "Homebrew use only",
-					"type": "string"
-				},
-				"classSource": {
-					"description": "Homebrew use only",
-					"type": "string"
-				}
-			},
-			"required": [
-				"name",
-				"shortName",
-				"subclassFeatures",
-				"source"
-			],
-			"additionalProperties": false
-		},
-
-		"class": {
-			"description" : "A character class",
-
-			"properties": {
-				"name": {
-					"type": "string"
-				},
-				"source": {
-					"type": "string"
-				},
-				"hd": {
-					"type": "object",
-					"properties": {
-						"number": {
-							"type": "integer"
-						},
-						"faces": {
-							"type": "integer"
-						}
-					},
-					"required": [
-						"number",
-						"faces"
-					],
-					"additionalProperties": false
-				},
-				"proficiency": {
-					"type": "array",
-					"items": {
-						"type": "string",
-						"enum": ["str", "dex", "con", "int", "wis", "cha"]
+						]
 					}
-				},
-				"classTableGroups": {
-					"type": "array",
-					"items": { "$ref": "#/definitions/classTableGroup"}
-				},
-				"startingProficiencies": {
-					"$ref": "#/definitions/proficiencies"
-				},
-				"startingEquipment": {
-					"type": "object",
-					"properties": {
-						"additionalFromBackground": {
-							"type": "boolean"
-						},
-						"default": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"goldAlternative": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"additionalFromBackground",
-						"default"
-					],
-					"additionalProperties": false
-				},
-				"multiclassing": {
-					"type": "object",
-					"properties": {
-						"requirements": {
-							"str": {
-								"type": "integer"
-							},
-							"dex": {
-								"type": "integer"
-							},
-							"con": {
-								"type": "integer"
-							},
-							"int": {
-								"type": "integer"
-							},
-							"wis": {
-								"type": "integer"
-							},
-							"cha": {
-								"type": "integer"
-							},
-							"or": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"str": {
-											"type": "integer"
-										},
-										"dex": {
-											"type": "integer"
-										},
-										"con": {
-											"type": "integer"
-										},
-										"int": {
-											"type": "integer"
-										},
-										"wis": {
-											"type": "integer"
-										},
-										"cha": {
-											"type": "integer"
-										}
-									},
-									"additionalProperties": false
-								}
-							}
-						},
-						"proficienciesGained": {
-							"$ref": "#/definitions/proficiencies"
-						}
-					},
-					"additionalProperties": false
-				},
-				"classFeatures": {
-					"type": "array",
-					"items": {
-						"type": "array",
-						"items": {
-							"items": {"$ref": "#/definitions/classFeature"}
-						}
-					},
-					"minItems": 20,
-					"maxItems": 20
-				},
-				"subclassTitle": {
-					"type": "string"
-				},
-				"subclasses": {
-					"type": "array",
-					"items": {"$ref": "#/definitions/subclass"}
-				},
-				"page": {
-					"type": "integer"
-				},
-				"fluff": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"entries": {
-								"type": "array",
-								"items": {"$ref": "entry.json"}
-							},
-							"page": {
-								"type": "integer"
-							},
-							"source": {
-								"type": "string"
-							},
-							"type": {
-								"type": "string"
-							}
-						},
-						"required": ["entries", "page", "source"],
-						"additionalProperties": false
+				],
+				[
+					{
+						"type": "entries",
+						"name": "Crítico Aprimorado",
+						"entries": [
+							"Agora quando você ataca com uma adaga você tem um crítico com 19-20, e No nível 18 passa seu crítico passa a ser 18-19-20.."
+						]
 					}
-				},
-				"classSpells": {
-					"description": "Homebrew use only",
-					"type": "array",
-					"items": {"$ref": "#/definitions/spellRef"}
-				}
-			},
-			"required": [
-				"name",
-				"source",
-				"classFeatures"
+				],
+				[
+					{
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Adagas Mágicas",
+								"entries": [
+									"As adagas feitas  por você agora contam como mágica para propósito de resistência a dano."
+								]
+							}
+						]
+					}
+				],
+				[
+					{
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Tiro Triplo",
+								"entries": [
+									"Como uma reação você pode jogar uma adaga num alvo que te atacou no alcance da sua adaga, você acerta 3 adagas no alvo, mas não acrescenta qualquer modificador ao dano, você pode fazer isso um número de vezes igual seu modificador de destreza."
+								]
+							
+							}
+						]
+					}
+				]
 			],
-			"additionalProperties": false
-		},
-
-		"spellRef": {
-			"description": "A reference to a spell, linked by name and source. Assumes PHB as the source, if none is provided.",
-			"oneOf": [
-				{
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"source": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"name", "source"
-					]
-				},
-				{
-					"type": "string"
-				}
-			]
+			[
+					{
+						"entries": [
+							{
+								"type": "entries",
+								"name": "Estilo de Luta",
+								"entries": [
+									"No nível 10 você pode escolher outro estilo de luta."
+			"source": "CoA 3pp",
+			"shortName": "Bloodrager"
+								]
+							}
+						]
+					}
+				]
+			],
+			"source": "CoA 3pp",
+			"shortName": "Protection"
 		}
-	},
-
-	"properties": {
-		"class": {
-			"type": "array",
-			"items": {"$ref": "#/definitions/class"}
-		}
-	}
+	]
 }
